@@ -1,11 +1,288 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Consumo de cafeína</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafeina: dos semanas de registro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDEBE4;
+  --paper-2:#E4E1D8;
+  --ink:#241A14;
+  --ink-soft:#6E6055;
+  --cafe:#6F4023;
+  --monster:#6F8C00;
+  --line:rgba(36,26,20,.16);
+  --measure:64ch;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  font-variant-numeric:tabular-nums;
+}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+p{max-width:var(--measure)}
+ 
+h1,h2,h3,.big{font-family:"Barlow Condensed",system-ui,sans-serif;font-weight:600;letter-spacing:.005em}
+ 
+/* ---------- encabezado ---------- */
+.masthead{
+  border-bottom:2px solid var(--ink);
+  padding:22px 0 14px;
+  display:flex;flex-wrap:wrap;gap:12px;
+  align-items:baseline;justify-content:space-between;
+  font-size:.86rem;color:var(--ink-soft);
+}
+ 
+/* ---------- hero ---------- */
+.hero{padding:56px 0 12px}
+h1{
+  font-size:clamp(3.1rem,9vw,6.4rem);
+  line-height:.93;
+  margin:0 0 22px;
+  max-width:14ch;
+}
+.standfirst{font-size:1.12rem;color:var(--ink-soft);margin:0 0 8px}
+ 
+/* ---------- cifras en linea ---------- */
+.figures{
+  display:flex;flex-wrap:wrap;gap:34px 52px;
+  padding:34px 0 8px;
+  border-top:1px solid var(--line);
+  margin-top:38px;
+}
+.figure .big{display:block;font-size:2.9rem;line-height:1;margin-bottom:2px}
+.figure span:last-child{font-size:.88rem;color:var(--ink-soft)}
+ 
+/* ---------- secciones ---------- */
+section{padding:64px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+h2{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.05;margin:0 0 10px;max-width:22ch}
+.dek{color:var(--ink-soft);margin:0 0 30px;font-size:1rem}
+ 
+figure{margin:0}
+svg{display:block;width:100%;height:auto;overflow:visible}
+figcaption{margin-top:14px;font-size:.88rem;color:var(--ink-soft);max-width:var(--measure)}
+ 
+/* ---------- leyenda ---------- */
+.key{display:flex;flex-wrap:wrap;gap:20px;margin:0 0 22px;font-size:.9rem}
+.key b{display:inline-flex;align-items:center;gap:8px;font-weight:500}
+.key i{width:13px;height:13px;border-radius:50%;display:inline-block}
+ 
+/* ---------- svg interno ---------- */
+.tickline{stroke:var(--line);stroke-width:1}
+.axis{fill:var(--ink-soft);font-family:"IBM Plex Sans",sans-serif;font-size:12px}
+.rowlab{fill:var(--ink);font-family:"IBM Plex Sans",sans-serif;font-size:12.5px}
+.val{fill:var(--ink);font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:600}
+.dot{opacity:.85}
+.ref{stroke:var(--ink);stroke-width:1.2;stroke-dasharray:5 4}
+.reflab{fill:var(--ink);font-family:"IBM Plex Sans",sans-serif;font-size:11.5px}
+ 
+/* ---------- prototipo rawgraphs ---------- */
+.plate{background:var(--paper-2);border:1px solid var(--line);padding:26px}
+.plate img{display:block;width:100%;height:auto}
+ 
+footer{border-top:2px solid var(--ink);padding:26px 0 60px;font-size:.86rem;color:var(--ink-soft)}
+footer p{max-width:var(--measure)}
+a{color:var(--cafe)}
+a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
+ 
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 20px}
+  section{padding:48px 0}
+  .figures{gap:26px 36px}
+  .figure .big{font-size:2.3rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
 </head>
 <body>
-  <h1>Consumo de cafeína</h1>
-  <img src="Bump.svg" alt="Bump chart de consumo de cafeína" width="1000">
+ 
+<div class="wrap">
+  <div class="masthead">
+    <span>Visualizacion de la Informacion &nbsp;&nbsp; ITBA</span>
+    <span>TP1 Personal Data &nbsp;&nbsp; Francisco Cattaneo</span>
+  </div>
+ 
+  <div class="hero">
+    <h1>Dos semanas tomando cafeina</h1>
+    <p class="standfirst">Registre cada cafe y cada lata entre el 17 y el 30 de agosto de 2026: a que hora, para que y cuanta cafeina tenia.</p>
+    <div class="figures" id="figures"></div>
+  </div>
+</div>
+ 
+<div class="wrap">
+ 
+  <section>
+    <h2>El dia se parte en dos</h2>
+    <p class="dek">Cada circulo es una toma. El tamano es la cafeina de esa porcion.</p>
+    <div class="key">
+      <b><i style="background:var(--cafe)"></i>Cafe</b>
+      <b><i style="background:var(--monster)"></i>Energizante</b>
+    </div>
+    <figure>
+      <div id="grid"></div>
+      <figcaption>El cafe se concentra en dos ventanas: al levantarme y a media tarde. La lata aparece siempre despues de las seis, antes de entrenar, y nunca se mezcla con la tarde de estudio.</figcaption>
+    </figure>
+  </section>
+ 
+  <section>
+    <h2>Cuanta cafeina por dia</h2>
+    <p class="dek">Total diario en miligramos, contra el limite de 400 mg que la FDA sugiere para adultos sanos.</p>
+    <figure>
+      <div id="daily"></div>
+      <figcaption>El pico es el viernes 21, con tres cafes y una lata. Ningun dia llega al umbral de referencia, y los domingos caen a menos de un cuarto del promedio.</figcaption>
+    </figure>
+  </section>
+ 
+  <section>
+    <h2>Para que la tomo</h2>
+    <p class="dek">Miligramos acumulados en las dos semanas, segun el motivo de cada toma.</p>
+    <figure>
+      <div id="context"></div>
+      <figcaption>Cafe y lata no compiten: cumplen funciones distintas. Todo lo que tomo para entrenar es energizante, y todo lo que tomo para trabajar o estudiar es cafe.</figcaption>
+    </figure>
+  </section>
+ 
+  <section>
+    <h2>Prototipo en RawGraphs</h2>
+    <p class="dek">Version generada con RawGraphs.io y retocada en Inkscape.</p>
+    <div class="plate">
+      <img src="Bump.svg" alt="Grafico de consumo de cafeina generado con RawGraphs">
+    </div>
+  </section>
+ 
+  <footer>
+    <p>Datos propios, registrados a mano entre el 17 y el 30 de agosto de 2026: 37 tomas en 14 dias. Los miligramos por porcion salen de USDA FoodData Central para el cafe y de la etiqueta del envase para la lata de 473 ml.</p>
+    <p>Los graficos de esta pagina se dibujan con SVG a partir de la misma tabla que alimenta el prototipo de RawGraphs.</p>
+  </footer>
+</div>
+ 
+<script>
+const DATOS = [{"fecha":"2026-08-17","dia_semana":"Lunes","tipo_dia":"Semana","hora":"08:15","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-17","dia_semana":"Lunes","tipo_dia":"Semana","hora":"14:30","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Estudio","lugar":"ITBA"},{"fecha":"2026-08-17","dia_semana":"Lunes","tipo_dia":"Semana","hora":"18:45","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-18","dia_semana":"Martes","tipo_dia":"Semana","hora":"08:00","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-18","dia_semana":"Martes","tipo_dia":"Semana","hora":"16:00","franja":"Tarde","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Trabajo","lugar":"Cafeteria"},{"fecha":"2026-08-18","dia_semana":"Martes","tipo_dia":"Semana","hora":"19:00","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-19","dia_semana":"Miercoles","tipo_dia":"Semana","hora":"08:30","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-19","dia_semana":"Miercoles","tipo_dia":"Semana","hora":"13:45","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Estudio","lugar":"ITBA"},{"fecha":"2026-08-20","dia_semana":"Jueves","tipo_dia":"Semana","hora":"07:50","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-20","dia_semana":"Jueves","tipo_dia":"Semana","hora":"15:10","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Estudio","lugar":"ITBA"},{"fecha":"2026-08-20","dia_semana":"Jueves","tipo_dia":"Semana","hora":"18:30","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-21","dia_semana":"Viernes","tipo_dia":"Semana","hora":"08:20","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-21","dia_semana":"Viernes","tipo_dia":"Semana","hora":"11:30","franja":"Manana","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Trabajo","lugar":"Cafeteria"},{"fecha":"2026-08-21","dia_semana":"Viernes","tipo_dia":"Semana","hora":"17:00","franja":"Tarde","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Estudio","lugar":"Casa"},{"fecha":"2026-08-21","dia_semana":"Viernes","tipo_dia":"Semana","hora":"19:15","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-22","dia_semana":"Sabado","tipo_dia":"Finde","hora":"10:30","franja":"Manana","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-22","dia_semana":"Sabado","tipo_dia":"Finde","hora":"11:30","franja":"Manana","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-23","dia_semana":"Domingo","tipo_dia":"Finde","hora":"11:00","franja":"Manana","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Social","lugar":"Casa"},{"fecha":"2026-08-24","dia_semana":"Lunes","tipo_dia":"Semana","hora":"08:10","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-24","dia_semana":"Lunes","tipo_dia":"Semana","hora":"14:00","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Estudio","lugar":"ITBA"},{"fecha":"2026-08-24","dia_semana":"Lunes","tipo_dia":"Semana","hora":"18:40","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-25","dia_semana":"Martes","tipo_dia":"Semana","hora":"08:05","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-25","dia_semana":"Martes","tipo_dia":"Semana","hora":"15:30","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Estudio","lugar":"ITBA"},{"fecha":"2026-08-25","dia_semana":"Martes","tipo_dia":"Semana","hora":"19:00","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-26","dia_semana":"Miercoles","tipo_dia":"Semana","hora":"08:40","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-26","dia_semana":"Miercoles","tipo_dia":"Semana","hora":"13:20","franja":"Tarde","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Estudio","lugar":"Cafeteria"},{"fecha":"2026-08-26","dia_semana":"Miercoles","tipo_dia":"Semana","hora":"18:00","franja":"Noche","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Estudio","lugar":"Casa"},{"fecha":"2026-08-27","dia_semana":"Jueves","tipo_dia":"Semana","hora":"07:55","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-27","dia_semana":"Jueves","tipo_dia":"Semana","hora":"14:50","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Estudio","lugar":"ITBA"},{"fecha":"2026-08-27","dia_semana":"Jueves","tipo_dia":"Semana","hora":"18:35","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-28","dia_semana":"Viernes","tipo_dia":"Semana","hora":"08:25","franja":"Manana","bebida":"Espresso","tipo":"Cafe","volumen_ml":30,"cafeina_mg":63,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-28","dia_semana":"Viernes","tipo_dia":"Semana","hora":"16:20","franja":"Tarde","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Trabajo","lugar":"Cafeteria"},{"fecha":"2026-08-28","dia_semana":"Viernes","tipo_dia":"Semana","hora":"19:10","franja":"Noche","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-29","dia_semana":"Sabado","tipo_dia":"Finde","hora":"10:15","franja":"Manana","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Trabajo","lugar":"Casa"},{"fecha":"2026-08-29","dia_semana":"Sabado","tipo_dia":"Finde","hora":"11:00","franja":"Manana","bebida":"Monster Energy","tipo":"Energizante","volumen_ml":473,"cafeina_mg":160,"contexto":"Entrenamiento","lugar":"Gimnasio"},{"fecha":"2026-08-29","dia_semana":"Sabado","tipo_dia":"Finde","hora":"17:30","franja":"Tarde","bebida":"Americano","tipo":"Cafe","volumen_ml":240,"cafeina_mg":95,"contexto":"Social","lugar":"Cafeteria"},{"fecha":"2026-08-30","dia_semana":"Domingo","tipo_dia":"Finde","hora":"11:20","franja":"Manana","bebida":"Cafe con leche","tipo":"Cafe","volumen_ml":240,"cafeina_mg":80,"contexto":"Social","lugar":"Casa"}];
+ 
+const CAFE = "#6F4023", MONSTER = "#6F8C00";
+const color = d => d.tipo === "Cafe" ? CAFE : MONSTER;
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const svg = (vb, inner) =>
+  `<svg viewBox="0 0 ${vb[0]} ${vb[1]}" role="img" preserveAspectRatio="xMidYMid meet">${inner}</svg>`;
+ 
+const minutos = h => (+h.slice(0,2)) * 60 + (+h.slice(3,5));
+const fechas  = [...new Set(DATOS.map(d => d.fecha))].sort();
+const porFecha = f => DATOS.filter(d => d.fecha === f);
+const totalDia = f => porFecha(f).reduce((a,d) => a + d.cafeina_mg, 0);
+ 
+/* ---------- cifras del encabezado ---------- */
+(function(){
+  const mg = DATOS.reduce((a,d) => a + d.cafeina_mg, 0);
+  const cafes = DATOS.filter(d => d.tipo === "Cafe").length;
+  const latas = DATOS.length - cafes;
+  const items = [
+    [DATOS.length, "tomas registradas"],
+    [cafes, "cafes"],
+    [latas, "latas"],
+    [Math.round(mg / fechas.length), "mg de cafeina por dia"]
+  ];
+  document.getElementById("figures").innerHTML = items.map(
+    ([v,l]) => `<div class="figure"><span class="big">${v}</span><span>${l}</span></div>`
+  ).join("");
+})();
+ 
+/* ---------- grilla dia x hora ---------- */
+(function(){
+  const W = 900, L = 108, R = 26, T = 46, ROW = 30;
+  const H = T + fechas.length * ROW + 26;
+  const h0 = 6, h1 = 21;
+  const x = m => L + ((m/60) - h0) / (h1 - h0) * (W - L - R);
+  const maxMg = Math.max(...DATOS.map(d => d.cafeina_mg));
+  let s = "";
+ 
+  for (let h = h0; h <= h1; h += 3){
+    s += `<line class="tickline" x1="${x(h*60)}" y1="${T-14}" x2="${x(h*60)}" y2="${H-26}"/>`;
+    s += `<text class="axis" x="${x(h*60)}" y="${T-22}" text-anchor="middle">${String(h).padStart(2,"0")}h</text>`;
+  }
+  fechas.forEach((f,i) => {
+    const y = T + i*ROW + ROW/2;
+    const d0 = porFecha(f)[0];
+    const et = `${d0.dia_semana.slice(0,3)} ${f.slice(8)}/${f.slice(5,7)}`;
+    s += `<text class="rowlab" x="${L-14}" y="${y+4}" text-anchor="end">${esc(et)}</text>`;
+    s += `<line class="tickline" x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke-dasharray="2 5"/>`;
+    porFecha(f).forEach(d => {
+      const r = 5 + (d.cafeina_mg / maxMg) * 8;
+      s += `<circle class="dot" cx="${x(minutos(d.hora))}" cy="${y}" r="${r.toFixed(1)}" fill="${color(d)}">`
+         + `<title>${esc(d.hora)} · ${esc(d.bebida)} · ${d.cafeina_mg} mg · ${esc(d.contexto)}</title></circle>`;
+    });
+  });
+  document.getElementById("grid").innerHTML = svg([W,H], s);
+})();
+ 
+/* ---------- total diario ---------- */
+(function(){
+  const W = 900, L = 46, R = 20, T = 26, B = 54;
+  const H = 320, LIM = 400;
+  const maxY = 450;
+  const y = v => H - B - (v / maxY) * (H - T - B);
+  const bw = (W - L - R) / fechas.length;
+  let s = "";
+ 
+  [0,200,400].forEach(v => {
+    s += `<line class="tickline" x1="${L}" y1="${y(v)}" x2="${W-R}" y2="${y(v)}"/>`;
+    s += `<text class="axis" x="${L-10}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
+  });
+ 
+  fechas.forEach((f,i) => {
+    const t = totalDia(f);
+    const d0 = porFecha(f)[0];
+    const cafeMg = porFecha(f).filter(d=>d.tipo==="Cafe").reduce((a,d)=>a+d.cafeina_mg,0);
+    const x0 = L + i*bw + bw*0.18, w = bw*0.64;
+    s += `<rect x="${x0}" y="${y(cafeMg)}" width="${w}" height="${y(0)-y(cafeMg)}" fill="${CAFE}"/>`;
+    if (t > cafeMg)
+      s += `<rect x="${x0}" y="${y(t)}" width="${w}" height="${y(cafeMg)-y(t)}" fill="${MONSTER}"/>`;
+    s += `<title>${esc(f)}: ${t} mg</title>`;
+    s += `<text class="val" x="${x0+w/2}" y="${y(t)-7}" text-anchor="middle">${t}</text>`;
+    s += `<text class="axis" x="${x0+w/2}" y="${H-B+18}" text-anchor="middle">${esc(d0.dia_semana.slice(0,2))}</text>`;
+    s += `<text class="axis" x="${x0+w/2}" y="${H-B+33}" text-anchor="middle">${f.slice(8)}</text>`;
+  });
+ 
+  s += `<line class="ref" x1="${L}" y1="${y(LIM)}" x2="${W-R}" y2="${y(LIM)}"/>`;
+  s += `<text class="reflab" x="${W-R}" y="${y(LIM)-8}" text-anchor="end">400 mg · referencia diaria FDA</text>`;
+  document.getElementById("daily").innerHTML = svg([W,H], s);
+})();
+ 
+/* ---------- por contexto ---------- */
+(function(){
+  const W = 900, L = 132, R = 60, T = 10, ROW = 54;
+  const ctxs = [...new Set(DATOS.map(d => d.contexto))];
+  const suma = (c,t) => DATOS.filter(d => d.contexto===c && d.tipo===t)
+                            .reduce((a,d) => a + d.cafeina_mg, 0);
+  ctxs.sort((a,b) => (suma(b,"Cafe")+suma(b,"Energizante")) - (suma(a,"Cafe")+suma(a,"Energizante")));
+  const maxV = Math.max(...ctxs.map(c => suma(c,"Cafe")+suma(c,"Energizante")));
+  const H = T + ctxs.length*ROW + 16;
+  const w = v => (v / maxV) * (W - L - R);
+  let s = "";
+ 
+  ctxs.forEach((c,i) => {
+    const y0 = T + i*ROW, bh = 26;
+    const a = suma(c,"Cafe"), b = suma(c,"Energizante");
+    s += `<text class="rowlab" x="${L-14}" y="${y0+bh-7}" text-anchor="end">${esc(c)}</text>`;
+    if (a) s += `<rect x="${L}" y="${y0}" width="${w(a)}" height="${bh}" fill="${CAFE}"><title>${esc(c)} · cafe · ${a} mg</title></rect>`;
+    if (b) s += `<rect x="${L+w(a)}" y="${y0}" width="${w(b)}" height="${bh}" fill="${MONSTER}"><title>${esc(c)} · energizante · ${b} mg</title></rect>`;
+    s += `<text class="val" x="${L+w(a+b)+10}" y="${y0+bh-7}">${a+b}</text>`;
+  });
+  s += `<text class="axis" x="${L}" y="${H-2}">miligramos acumulados en 14 dias</text>`;
+  document.getElementById("context").innerHTML = svg([W,H], s);
+})();
+</script>
 </body>
 </html>
+ 
