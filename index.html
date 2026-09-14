@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cafeina: dos semanas de registro</title>
+<title>Visualizacion de la Informacion - Ejercicios de clase</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
   --ink:#241A14;
   --ink-soft:#6E6055;
   --cafe:#6F4023;
-  --monster:#6F8C00;
   --line:rgba(36,26,20,.16);
   --measure:64ch;
 }
@@ -31,9 +30,9 @@ body{
 }
 .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
 p{max-width:var(--measure)}
- 
+
 h1,h2,.big{font-family:"Barlow Condensed",system-ui,sans-serif;font-weight:600;letter-spacing:.005em}
- 
+
 .masthead{
   border-bottom:2px solid var(--ink);
   padding:22px 0 14px;
@@ -41,98 +40,111 @@ h1,h2,.big{font-family:"Barlow Condensed",system-ui,sans-serif;font-weight:600;l
   align-items:baseline;justify-content:space-between;
   font-size:.86rem;color:var(--ink-soft);
 }
- 
-.hero{padding:56px 0 12px}
+
+.hero{padding:56px 0 40px}
 h1{
-  font-size:clamp(3.1rem,9vw,6.4rem);
-  line-height:.93;
+  font-size:clamp(2.8rem,8vw,5.4rem);
+  line-height:.95;
   margin:0 0 22px;
-  max-width:14ch;
+  max-width:16ch;
 }
-.standfirst{font-size:1.12rem;color:var(--ink-soft);margin:0 0 8px}
- 
-.figures{
-  display:flex;flex-wrap:wrap;gap:34px 52px;
-  padding:34px 0 8px;
-  border-top:1px solid var(--line);
-  margin-top:38px;
+.standfirst{font-size:1.12rem;color:var(--ink-soft);margin:0 0 26px}
+
+.tp-link{
+  display:inline-block;
+  border:2px solid var(--ink);
+  padding:12px 20px;
+  text-decoration:none;
+  color:var(--ink);
+  font-family:"Barlow Condensed",system-ui,sans-serif;
+  font-size:1.2rem;font-weight:600;
+  letter-spacing:.01em;
 }
-.figure .big{display:block;font-size:2.9rem;line-height:1;margin-bottom:2px}
-.figure span:last-child{font-size:.88rem;color:var(--ink-soft)}
- 
-section{padding:64px 0;border-top:1px solid var(--line)}
-h2{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.05;margin:0 0 10px;max-width:22ch}
-.dek{color:var(--ink-soft);margin:0 0 30px;font-size:1rem}
-figcaption{margin-top:14px;font-size:.88rem;color:var(--ink-soft);max-width:var(--measure)}
- 
+.tp-link:hover{background:var(--ink);color:var(--paper)}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.7rem,4vw,2.3rem);line-height:1.05;margin:0 0 8px}
+.dek{color:var(--ink-soft);margin:0 0 26px;font-size:1rem}
+
 .plate{background:var(--paper-2);border:1px solid var(--line);padding:26px}
-.plate img{display:block;width:100%;height:auto}
- 
+.plate img,.plate object{display:block;width:100%;height:auto}
+.plate iframe{display:block;width:100%;border:none}
+
+.pendiente{
+  background:var(--paper-2);
+  border:1px dashed var(--ink-soft);
+  padding:40px 26px;
+  color:var(--ink-soft);
+  text-align:center;
+  font-size:.95rem;
+}
+
 footer{border-top:2px solid var(--ink);padding:26px 0 60px;font-size:.86rem;color:var(--ink-soft)}
 footer p{max-width:var(--measure)}
 a{color:var(--cafe)}
 a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
- 
+
 @media (max-width:640px){
   body{font-size:16px}
   .wrap{padding:0 20px}
-  section{padding:48px 0}
-  .figures{gap:26px 36px}
-  .figure .big{font-size:2.3rem}
+  section{padding:44px 0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
- 
+
 <div class="wrap">
   <div class="masthead">
-    <span>Visualizacion de la Informacion &nbsp;&nbsp; ITBA</span>
-    <span>TP1 Personal Data &nbsp;&nbsp; Francisco Cattaneo</span>
+    <span>72.74 Visualizacion de la Informacion &nbsp;&nbsp; ITBA &nbsp;&nbsp; 2c 2026</span>
+    <span>Francisco Cattaneo</span>
   </div>
- 
+
   <div class="hero">
-    <h1>Dos semanas tomando cafeina</h1>
-    <p class="standfirst">Registre cada cafe y cada lata entre el 17 y el 30 de agosto de 2026: a que hora, para que y cuanta cafeina tenia.</p>
-    <div class="figures">
-      <div class="figure"><span class="big">37</span><span>tomas registradas</span></div>
-      <div class="figure"><span class="big">27</span><span>cafes</span></div>
-      <div class="figure"><span class="big">10</span><span>latas</span></div>
-      <div class="figure"><span class="big">262</span><span>mg de cafeina por dia</span></div>
-    </div>
+    <h1>Ejercicios de clase</h1>
+    <p class="standfirst">Practicas realizadas a lo largo de la cursada, una por cada herramienta vista en clase.</p>
+    <a class="tp-link" href="tp1/">Ver el TP1 &mdash; Consumo de cafeina &rarr;</a>
   </div>
- 
+
   <section>
-    <h2>&iquest;Cuanta cafeina consumo por dia?</h2>
-    <p class="dek">Total diario en miligramos, separado entre cafe y energizante. Grafico interactivo hecho con Flourish.</p>
+    <h2>RawGraphs</h2>
+    <p class="dek">Streamgraph de ingresos de la industria musical por formato, 1975&ndash;2019. Generado con RawGraphs.io y exportado como SVG.</p>
     <div class="plate">
-      <div class="flourish-embed flourish-chart" data-src="visualisation/30111200" style="min-height:480px;"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/30111200/thumbnail" width="100%" alt="Cafeina por dia" /></noscript></div>
+      <object type="image/svg+xml" data="Bump.svg" aria-label="Streamgraph de ingresos de la industria musical"></object>
     </div>
-    <figcaption>El pico es el viernes 21, con tres cafes y una lata. Los domingos, sin entrenamiento ni trabajo, el consumo cae a menos de un cuarto del promedio. El cafe sostiene el piso de casi todos los dias; el energizante aparece o no aparece, sin termino medio.</figcaption>
   </section>
 
-    <section>
-    <h2>&iquest;Que tomo para cada cosa?</h2>
-    <p class="dek">Miligramos de cafeina segun la bebida, el motivo y el lugar. Diagrama aluvial hecho con RAWGraphs.</p>
+  <section>
+    <h2>Flourish</h2>
+    <p class="dek">Ejercicio realizado con Flourish a partir del dataset provisto en clase.</p>
     <div class="plate">
-      <img src="viz.svg" alt="Diagrama aluvial: bebida, contexto y lugar de consumo">
+      <div class="flourish-embed flourish-chart" data-src="visualisation/29930086" style="min-height:480px;"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/29930086/thumbnail" width="100%" alt="Grafico hecho con Flourish" /></noscript></div>
     </div>
-    <figcaption>El energizante viaja por un solo hilo: 1600 mg que van enteros a entrenamiento, en el gimnasio. Los cafes en cambio se reparten entre trabajo, estudio y encuentros sociales, y cambian de lugar segun el momento del dia.</figcaption>
   </section>
-   <section>
-    <h2>&iquest;Que bebida aporta mas cafeina?</h2>
-    <p class="dek">Catalogo de bebidas registradas, con la cafeina que aporta cada una en las dos semanas. Tabla hecha con Datawrapper.</p>
+
+  <section>
+    <h2>DataWrapper</h2>
+    <p class="dek">Ejercicio realizado con DataWrapper a partir del dataset provisto en clase.</p>
+    <div class="pendiente">
+      Pegar aca el iframe de DataWrapper, reemplazando este bloque completo.
+    </div>
+  </section>
+
+  <section>
+    <h2>Tableau</h2>
+    <p class="dek">Dashboard de listings de Airbnb: cantidad por tipo de habitacion, distribucion de precios y ubicacion geografica. Hecho con Tableau Public.</p>
     <div class="plate">
-      <iframe title="¿Qué bebida aporta más cafeína?" aria-label="Table" id="datawrapper-chart-oMvS3" src="https://datawrapper.dwcdn.net/oMvS3/1/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="380" data-external="1"></iframe><script type="text/javascript">(function(){function e(){window.addEventListener(`message`,function(e){if(e.data[`datawrapper-height`]!==void 0){var t=document.querySelectorAll(`iframe`);for(var n in e.data[`datawrapper-height`])for(var r=0,i;i=t[r];r++)if(i.contentWindow===e.source){var a=e.data[`datawrapper-height`][n]+`px`;i.style.height=a}}})}e()})();</script>
+      <iframe src="https://public.tableau.com/views/AIRBNBINFOVIS_17888190381250/Dashboard1?:showVizHome=no&amp;:embed=true&amp;:toolbar=bottom"
+              title="Dashboard de listings de Airbnb hecho con Tableau Public"
+              width="100%" height="860" style="border:none;"></iframe>
     </div>
-    <figcaption>La lata aparece 10 veces contra 27 cafes, pero explica el 44% de toda la cafeina. Esta tabla es tambien la referencia metodologica del trabajo: de aca salen los miligramos que alimentan el resto de los graficos.</figcaption>
   </section>
+
   <footer>
-    <p>Registro propio del 17 al 30 de agosto de 2026: 37 tomas en 14 dias. Los miligramos por porcion salen de USDA FoodData Central para el cafe y de la etiqueta del envase para la lata de 473 ml.</p>
-    <p>Visualizacion construida con Flourish a partir de la tabla de registro.</p>
+    <p>Cada seccion corresponde a una practica de clase con una herramienta distinta. El trabajo practico con datos personales esta en una pagina aparte: <a href="tp1/">TP1 &mdash; Consumo de cafeina</a>.</p>
   </footer>
 </div>
- 
+
 </body>
 </html>
  
