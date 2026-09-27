@@ -31,9 +31,9 @@ body{
 }
 .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
 p{max-width:var(--measure)}
- 
+
 h1,h2,.big{font-family:"Barlow Condensed",system-ui,sans-serif;font-weight:600;letter-spacing:.005em}
- 
+
 .masthead{
   border-bottom:2px solid var(--ink);
   padding:22px 0 14px;
@@ -41,7 +41,8 @@ h1,h2,.big{font-family:"Barlow Condensed",system-ui,sans-serif;font-weight:600;l
   align-items:baseline;justify-content:space-between;
   font-size:.86rem;color:var(--ink-soft);
 }
- 
+.masthead a{color:var(--ink-soft)}
+
 .hero{padding:56px 0 12px}
 h1{
   font-size:clamp(3.1rem,9vw,6.4rem);
@@ -50,7 +51,7 @@ h1{
   max-width:14ch;
 }
 .standfirst{font-size:1.12rem;color:var(--ink-soft);margin:0 0 8px}
- 
+
 .figures{
   display:flex;flex-wrap:wrap;gap:34px 52px;
   padding:34px 0 8px;
@@ -59,20 +60,23 @@ h1{
 }
 .figure .big{display:block;font-size:2.9rem;line-height:1;margin-bottom:2px}
 .figure span:last-child{font-size:.88rem;color:var(--ink-soft)}
- 
+
 section{padding:64px 0;border-top:1px solid var(--line)}
 h2{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.05;margin:0 0 10px;max-width:22ch}
 .dek{color:var(--ink-soft);margin:0 0 30px;font-size:1rem}
 figcaption{margin-top:14px;font-size:.88rem;color:var(--ink-soft);max-width:var(--measure)}
- 
+
 .plate{background:var(--paper-2);border:1px solid var(--line);padding:26px}
 .plate img{display:block;width:100%;height:auto}
- 
+.plate iframe{display:block;width:100%;border:none}
+
+.cierre p{margin:0 0 16px}
+
 footer{border-top:2px solid var(--ink);padding:26px 0 60px;font-size:.86rem;color:var(--ink-soft)}
 footer p{max-width:var(--measure)}
 a{color:var(--cafe)}
 a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
- 
+
 @media (max-width:640px){
   body{font-size:16px}
   .wrap{padding:0 20px}
@@ -84,16 +88,16 @@ a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
 </style>
 </head>
 <body>
- 
+
 <div class="wrap">
   <div class="masthead">
     <span>Visualizacion de la Informacion &nbsp;&nbsp; ITBA</span>
-    <span>TP1 Personal Data &nbsp;&nbsp; Francisco Cattaneo</span>
+    <span>TP1 Personal Data &nbsp;&nbsp; Francisco Cattaneo &nbsp;&nbsp; <a href="../">Ejercicios de clase</a></span>
   </div>
- 
+
   <div class="hero">
     <h1>Dos semanas tomando cafeina</h1>
-    <p class="standfirst">Registre cada cafe y cada lata entre el 17 y el 30 de agosto de 2026: a que hora, para que y cuanta cafeina tenia.</p>
+    <p class="standfirst">Registre cada cafe y cada lata entre el 17 y el 30 de agosto de 2026: a que hora, para que y cuanta cafeina tenia. La pregunta de fondo era si tomo cafeina por costumbre o por funcion.</p>
     <div class="figures">
       <div class="figure"><span class="big">37</span><span>tomas registradas</span></div>
       <div class="figure"><span class="big">27</span><span>cafes</span></div>
@@ -101,7 +105,7 @@ a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
       <div class="figure"><span class="big">262</span><span>mg de cafeina por dia</span></div>
     </div>
   </div>
- 
+
   <section>
     <h2>&iquest;Cuanta cafeina consumo por dia?</h2>
     <p class="dek">Total diario en miligramos, separado entre cafe y energizante. Grafico interactivo hecho con Flourish.</p>
@@ -111,15 +115,16 @@ a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
     <figcaption>El pico es el viernes 21, con tres cafes y una lata. Los domingos, sin entrenamiento ni trabajo, el consumo cae a menos de un cuarto del promedio. El cafe sostiene el piso de casi todos los dias; el energizante aparece o no aparece, sin termino medio.</figcaption>
   </section>
 
-    <section>
+  <section>
     <h2>&iquest;Que tomo para cada cosa?</h2>
-    <p class="dek">Miligramos de cafeina segun la bebida, el motivo y el lugar. Diagrama aluvial hecho con RAWGraphs.</p>
+    <p class="dek">Miligramos de cafeina segun la bebida, el motivo y el lugar. Diagrama aluvial hecho con RAWGraphs y retocado en Inkscape.</p>
     <div class="plate">
-      <img src="viz.svg" alt="Diagrama aluvial: bebida, contexto y lugar de consumo">
+      <img src="../viz.svg" alt="Diagrama aluvial: bebida, contexto y lugar de consumo">
     </div>
-    <figcaption>El energizante viaja por un solo hilo: 1600 mg que van enteros a entrenamiento, en el gimnasio. Los cafes en cambio se reparten entre trabajo, estudio y encuentros sociales, y cambian de lugar segun el momento del dia.</figcaption>
+    <figcaption>El energizante viaja por un solo hilo: 1600 mg que van enteros a entrenamiento, en el gimnasio. Los cafes en cambio se reparten entre trabajo, estudio y encuentros sociales, y cambian de lugar segun el momento del dia. Ningun cafe llega al gimnasio y ninguna lata llega al escritorio.</figcaption>
   </section>
-   <section>
+
+  <section>
     <h2>&iquest;Que bebida aporta mas cafeina?</h2>
     <p class="dek">Catalogo de bebidas registradas, con la cafeina que aporta cada una en las dos semanas. Tabla hecha con Datawrapper.</p>
     <div class="plate">
@@ -127,12 +132,20 @@ a:focus-visible,:focus-visible{outline:2px solid var(--cafe);outline-offset:3px}
     </div>
     <figcaption>La lata aparece 10 veces contra 27 cafes, pero explica el 44% de toda la cafeina. Esta tabla es tambien la referencia metodologica del trabajo: de aca salen los miligramos que alimentan el resto de los graficos.</figcaption>
   </section>
+
+  <section class="cierre">
+    <h2>&iquest;Que aprendi de mis propios datos?</h2>
+    <p>La respuesta a la pregunta inicial es que no tomo cafeina por costumbre sino por funcion, y que uso dos sustancias distintas para dos trabajos distintos. El cafe es el piso: aparece casi todos los dias, en dosis chicas y repartidas, y acompana tareas que duran horas. El energizante es binario: los dias que entreno esta, los dias que no entreno no aparece nada.</p>
+    <p>Lo que no esperaba era la asimetria entre frecuencia y peso. La lata es menos de un tercio de las tomas y aporta casi la mitad de los miligramos, algo que ningun grafico de conteo habria mostrado: solo se ve cuando se convierte cada bebida a una unidad comun.</p>
+    <p>Tambien aparecio un limite del registro. Al anotar solo lo que tomo, no tengo con que cruzarlo: no se si los dias de 366 mg rindieron mas que los de 80. La continuacion natural seria sumar una variable de resultado, horas de sueno o energia percibida, para pasar de describir el habito a evaluarlo.</p>
+  </section>
+
   <footer>
-    <p>Registro propio del 17 al 30 de agosto de 2026: 37 tomas en 14 dias. Los miligramos por porcion salen de USDA FoodData Central para el cafe y de la etiqueta del envase para la lata de 473 ml.</p>
-    <p>Visualizacion construida con Flourish a partir de la tabla de registro.</p>
+    <p>Registro propio del 17 al 30 de agosto de 2026: 37 tomas en 14 dias, anotadas a mano en el momento de cada consumo. Los miligramos por porcion salen de USDA FoodData Central para el cafe y de la etiqueta del envase para la lata de 473 ml.</p>
+    <p>Visualizaciones construidas con Flourish, RAWGraphs y Datawrapper a partir de la misma tabla de registro. Los ejercicios de clase estan en <a href="../">la pagina principal</a>.</p>
   </footer>
 </div>
- 
+
 </body>
 </html>
  
